@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加出版社</title>
+</head>
+<body>
+    <h1> 添加出版社 </h1>
+
+
+    <form action="add_publisher" method="post">
+        {% csrf_token %}
+        <input type="text" name="publisher_name" >
+        <button type="submit">提交</button>
+        <p style="color: red"> {{ error }}</p>
+
+    </form>
+</body>
+</html>
