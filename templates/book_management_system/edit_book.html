@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑书籍</title>
+</head>
+<body>
+    <h1>编辑书籍</h1>
+    <form action="edit_book" method="post">
+        {% csrf_token%}
+        <input type="text" name="id" value="{{ book.id }}" hidden>
+        <p>
+            书名：
+            <input type="text" name="book_name" value="{{ book.book_name }}" >
+        </p>
+        <p>
+            出版社
+        <input type="text" name="publisher" value="{{ book.publisher_id.name }}">
+        </p>
+        <select name="publisher">
+
+            {% for publisher in publishers  %}
+
+                {% if book.publisher_id.id == publisher.id %}
+                    <option  selected value="{{ publisher.id }}"> {{ publisher.name }}</option>
+                {% else %}
+                     <option  value="{{ publisher.id }}"> {{ publisher.name }}</option>
+                {% endif %}
+
+
+            {% endfor %}
+        </select>
+    </form>
+</body>
+</html>
