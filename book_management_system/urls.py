@@ -22,5 +22,6 @@ urlpatterns = [
     path('authors_list', author_views.authors_list),
     path('add_author', author_views.add_author),
     path('delete_author', author_views.delete_author),
+    path('edit_author', author_views.edit_author),
 
 ]

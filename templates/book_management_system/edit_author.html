@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑作者</title>
+</head>
+<body>
+    <h1> 编辑作者 </h1>
+    <form method="post" action="edit_author">
+        {% csrf_token %}
+     <p>
+         <input type="text" name="id" value="{{ author.id }}" hidden>
+     </p>
+    <p>
+        作者名:
+        <input type="text" name="author" value="{{ author.author_name  }}">
+
+    </p>
+    <p>
+        书籍:
+        <select multiple="multiple" name="books">
+            {% for book in books_list %}
+                {% if book in author.book.all  %}
+                <option selected value="{{ book.id }}">{{ book.book_name }}</option>
+                {% else %}
+                <option value="{{ book.id }}">{{ book.book_name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </p>
+
+    <p>
+        <input type="submit" value="提交">
+    </p>
+        </form>
+</body>
+</html>
