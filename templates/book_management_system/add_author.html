@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加作者</title>
+</head>
+<body>
+    <form method="post" action="add_author">
+        {% csrf_token %}
+        <p>
+            作者名字:
+            <input type="text" name="author">
+        </p>
+        <p>
+            书籍:
+            <select multiple="multiple" name="books">
+                {%  for book in books_list %}
+                    <option value="{{ book.id }}">{{ book.book_name }}</option>
+                {% endfor %}
+            </select>
+
+        </p>
+        <p>
+            <input type="submit" value="提交">
+        </p>
+    </form>
+</body>
+</html>

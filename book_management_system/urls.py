@@ -1,5 +1,5 @@
 from django.urls import path
-from book_management_system import views,books_views
+from book_management_system import views,books_views, author_views
 
 
 app_name = 'book_management_system'
@@ -17,5 +17,10 @@ urlpatterns = [
     path('add_book', books_views.add_book),
     path('delete_book', books_views.delete_book),
     path('edit_book', books_views.edit_book),
+
+    # 作者相关的对应表
+    path('authors_list', author_views.authors_list),
+    path('add_author', author_views.add_author),
+    path('delete_author', author_views.delete_author),
 
 ]

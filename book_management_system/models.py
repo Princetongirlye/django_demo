@@ -29,3 +29,24 @@ class Book(models.Model):
         db_table = 't_book'
 
 
+class Author(models.Model):
+    id = models.AutoField(primary_key=True)
+    author_name = models.CharField(max_length=255, null=False, unique=True)
+    # 告诉ORM author 和 book 多对多的关联关系
+    # orm 自动生成第三张表
+    book = models.ManyToManyField(to=Book)
+
+    class Meta:
+        db_table = 't_author'
+
+    def __str__(self):
+        return "<Author Object:{}>".format(self.author_name)
+
+
+# class Author_Book(models.Model):
+#     id = models.AutoField(primary_key=True)
+#     author_id = models.ForeignKey(to=Author, on_delete=None)
+#     book_id = models.ForeignKey(to=Book, on_delete=None)
+#
+#     class Meta:
+#         db_table = "t_author_book"
